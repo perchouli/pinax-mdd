@@ -25,7 +25,7 @@
        <span class="fr">
        <input name="" type="checkbox" value="">
        关注</span>
-       <h3><a href="#"> {{ photo.title }} </a></h3>
+       <h3><a href="#">{{photo.brand}} {{ photo.title }} </a></h3>
 
         <div class="gallery-photo-thumb">
             <a href="{% groupurl photo_details group id=photo.id %}"><img src="{{ photo.get_display_url }}" alt="{{ photo.title }}"/></a><br />
