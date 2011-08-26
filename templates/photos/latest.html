@@ -11,33 +11,40 @@
 
 {% block head_title %}{% blocktrans %}Latest Photos{% endblocktrans %}{% endblock %}
 
-{% block body_extra %}
+{% block body %}
 
-<div class="con-r3">
+  <!--START: sidebar -->
+  <div class="photo_sidebar">
+   <div class="brand">
+    <h3>品牌</h3>
+    <ul>
+     <li>
+      <label>apple</label>
+      <span>x 20</span></li>
+     <li>
+      <label>TUNEWEAR</label>
+      <span>x 20</span></li>
+     <li>
+      <label>山寨</label>
+      <span>x 20</span></li>
+    </ul>
+   </div>
+  </div>
+  <!--END: sidebar --> 
+  <!--START: content -->
+<div class="photo_con">
    <div class="product-detail">
    {% autopaginate photos %}
     {% for photo in photos %}
     <div class="detail-item clearfix">
-     <div class="gallery">
-      <div class="wrap">
        <div class="mini-avatar"><a href="{% url profile_detail photo.member.username %}">{% avatar photo.member.username 50 %}</a><br />
         {{ photo.member.username }}</div>
-       <span class="fr">
-       <input name="" type="checkbox" value="">
-       关注</span>
-       <h3><a href="#">{{photo.brand}} {{ photo.title }} </a></h3>
-
+       <h3 class="product_name"><a href="#">{{photo.brand}} {{ photo.title }} </a></h3>
         <div class="gallery-photo-thumb">
             <a href="{% groupurl photo_details group id=photo.id %}"><img src="{{ photo.get_display_url }}" alt="{{ photo.title }}"/></a><br />
-            {% silk "comment" %}<a href="{% groupurl photo_details group id=photo.id %}#photocomments">{% get_comment_count for photo as commentcount %} {{ commentcount }} Comments</a><br />
+            {% silk "comment" %}<a href="{% groupurl photo_details group id=photo.id %}">{% get_comment_count for photo as commentcount %} {{ commentcount }} Comments</a><br />
             {% blocktrans with photo.view_count as view_count %}Viewed {{ view_count }} times{% endblocktrans %}
-      <div class="ask-question">
-       <p>我有这件宝贝<span>- 提问 - 评分 - 评价 - 估价</span></p>
-       <input type="text" value="点击对商品进行提问或是评价..." class="question-fields">
-      </div>
-     </div>
-    </div>
-   </div>
+        </div>
    {% endfor %}
    {% paginate %}
   </div>
@@ -45,4 +52,17 @@
   <div class="clear"></div>
  </div>
 </div> 
+
+
+{% endblock %}
+
+{% block extra_body %}
+<script type="text/javascript" >
+jQuery(document).ready(function(){
+    $('a[rel*=facebox]').facebox({
+            loadingImage: '/site_media/static/pinax/images/facebox/loading.gif',
+            closeImage: '/site_media/static/pinax/images/facebox/closelabel.gif',
+    });
+});
+</script>
 {% endblock %}

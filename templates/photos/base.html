@@ -12,40 +12,15 @@ crash.
 
 {% block body_class %}photos{% endblock %}
 
-{% block body %}
-<div  class="layout1"> 
-  <!--START: sidebar -->
-  <div class="sidebar3">
+{% block subnav %}
     {% if user.is_authenticated %}
-    <div class="menu">
         <ul>
             <li><a href="{% groupurl photos group %} ">{% trans "Latest Photos" %}</a></li>
             <li><a href="{% groupurl photos_yours group %}">{% trans "Your Photos" %}</a></li>
             <li><a href="{% url friends_photos %}">{% trans "Friends' Photos" %}</a></li>
             <li><a href="{% groupurl photo_upload group %}">{% trans "Upload a Photo" %}</a></li>
         </ul>
-    </div>
     {% else %}
         &nbsp;
     {% endif %}
-   <div class="trademark">
-    <h3>品牌</h3>
-    <ul>
-     <li>
-      <label>apple</label>
-      <span>x 20</span></li>
-     <li>
-      <label>TUNEWEAR</label>
-      <span>x 20</span></li>
-     <li>
-      <label>山寨</label>
-      <span>x 20</span></li>
-    </ul>
-   </div>
-  </div>
-  <!--END: sidebar --> 
-  <!--START: content -->
-  {% block body_extra %}{% endblock %}
-</div>
-</div>
 {% endblock %}

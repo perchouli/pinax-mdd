@@ -66,7 +66,7 @@ STATIC_URL = '/site_media/static/'
 
 # Additional directories which hold static files
 STATICFILES_DIRS = (
-    ('pinax-mdd', os.path.join(PROJECT_ROOT, 'media')),
+    ('pinax-ajax', os.path.join(PROJECT_ROOT, 'media')),
     ('pinax', os.path.join(PINAX_ROOT, 'media', PINAX_THEME)),
 )
 
@@ -76,7 +76,7 @@ STATICFILES_DIRS = (
 ADMIN_MEDIA_PREFIX = posixpath.join(STATIC_URL, "admin/")
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'e)o-ttqfh-i-d!=%5)it3==w4(x#(bao7g5zuw0wdic@ti0a6^'
+SECRET_KEY = 'gi2q^t25ph_2*=m_^xmhze0w#a9a!=b*6ktc!&z8ol5!)accxn'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -98,7 +98,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.transaction.TransactionMiddleware',
 )
 
-ROOT_URLCONF = 'pinax-mdd.urls'
+ROOT_URLCONF = 'pinax-ajax.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_ROOT, "templates"),
@@ -120,7 +120,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "account.context_processors.account",
     "messages.context_processors.inbox",
     "friends_app.context_processors.invitations",
-    "pinax-mdd.context_processors.combined_inbox_count",
+    "pinax-ajax.context_processors.combined_inbox_count",
 )
 
 COMBINED_INBOX_COUNT_SOURCES = (
